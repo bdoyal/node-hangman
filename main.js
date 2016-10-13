@@ -8,9 +8,9 @@ var render = function() {
     // "clear" the console
     console.log('\033[2J');
     // Create ascii art based on the word
-    figlet.textSync(game.word.render());
+    console.log(figlet.textSync(game.word.render()));
     // Print the previously guessed letters
-    console.log(`[ ${[...game.guesses].join(', ')} ]`);
+    console.log(`Incorrect guesses: [ ${[...game.guesses].join(', ')} ]`);
     // Print the score and number of guesses remaining
     console.log(`Score: ${game.score}, Guesses: ${game.tries})`);
 };
