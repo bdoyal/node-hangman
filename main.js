@@ -8,9 +8,9 @@ var render = function() {
     // "clear" the console
     console.log('\033[2J');
     // Create ascii art based on the word
-    figlet.textSync(game.word.show());
+    figlet.textSync(game.word.render());
     // Print the previously guessed letters
-    console.log(`[ ${game.guesses.join(', ')} ]`);
+    console.log(`[ ${[...game.guesses].join(', ')} ]`);
     // Print the score and number of guesses remaining
     console.log(`Score: ${game.score}, Guesses: ${game.tries})`);
 };
@@ -39,7 +39,7 @@ var guess = function() {
                     return 'Guess one letter at a time';
                 } else if ([...game.guesses].indexOf(input) >= 0) {
                     return `You have already guessed ${input}, try another letter`;
-                } else if (input.match(/[a-z]/i)) {
+                } else if (!input.match(/[a-z]/i)) {
                     return 'Guess a letter from a to z';
                 } else {
                     return true;
